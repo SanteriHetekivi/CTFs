@@ -1,0 +1,9 @@
+#!/bin/bash
+# Download file.
+wget -O data.pcap https://webshell2017.picoctf.com/static/1836a8ab819664a77ff4d8a754f91d92/data.pcap;
+# Transform file to human readable, find password and remove unnecessary data.
+pass=$(tcpick -C -yP -r data.pcap | grep pswrd= | sed 's/.*=//');
+# Remove URL encoded charathers.
+pass=$(echo "$pass" | sed 's/%.*//');
+# Decode from base64
+echo "$pass" | base64 --decode;

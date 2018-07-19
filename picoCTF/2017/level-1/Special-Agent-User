@@ -1,0 +1,5 @@
+#!/bin/bash
+# Download file.
+wget -O data.pcap https://webshell2017.picoctf.com/static/6af4c767cb3ba27c76fa171fd0c01d34/data.pcap;
+# Transform file to human readable, find all useragent data.
+tcpick -C -yP -r data.pcap | grep User-Agent;
