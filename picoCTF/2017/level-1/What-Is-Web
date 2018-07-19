@@ -1,0 +1,5 @@
+#!/bin/bash
+# Download files from url.
+wget -r http://shell2017.picoctf.com:4079/
+# Print all lines from files that contains text flag.
+grep "flag" ./shell2017.picoctf.com:4079/*
