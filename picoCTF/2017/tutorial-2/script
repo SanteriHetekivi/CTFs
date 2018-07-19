@@ -1,0 +1,10 @@
+#!/bin/bash
+# Getting last line, that contains the secret, from provided url.
+LINE=$(curl https://webshell2017.picoctf.com/static/7ae35fc2c5277daab6ca7553c71216c1/message.txt -s | tail -1)
+# Running caesar with every rotation.
+for i in {0..25}
+do
+    echo $i;    # Print out the rotation.
+    # Print out caesar result of line with rotation.
+    echo "$LINE" | caesar $i;
+done

@@ -1,0 +1,7 @@
+#!/bin/bash
+# Download namelist from url,
+curl https://webshell2017.picoctf.com/static/2757ba64098c033dc7821249099a7297/contractors.txt -s | 
+# find all lines that start with Robin and end with Morris
+grep -P "^Robin.*Morris$" | 
+# and remove Robin, Morris and whitespaces to reveal middle name.
+sed "s/Robin\|Morris\|\s//g";
