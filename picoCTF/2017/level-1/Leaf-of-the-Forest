@@ -1,0 +1,3 @@
+#!/bin/bash
+# Finds file which name contains flag and print it's content.
+cat $(find /problems/57a246295d1345729cbddf98c16fcaed/. -name "*flag*");

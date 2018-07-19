@@ -1,0 +1,5 @@
+#!/bin/bash
+# loooong CHARACTER COUNT ENDING_CHARACTER
+# Makes string that has given charather given amount of times ending with given charather.
+# Then copies that to clipboard with xclip.
+echo $(printf "$1"%.0s $(seq 1 $2))$3 | xclip -selection c

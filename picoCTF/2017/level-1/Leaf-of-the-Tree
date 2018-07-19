@@ -1,0 +1,9 @@
+#!/bin/bash
+# Travel trough directories that are named after trunk and then print contents of files.
+dir="/problems/f8fc794974ad619254d983bc423608c6";
+while [[ ! -z "$dir" ]];
+do
+    cd "$dir";
+    dir=$(ls $PWD | grep trunk);
+done;
+cat *;

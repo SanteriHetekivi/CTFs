@@ -1,0 +1,20 @@
+#!/bin/bash
+# Variable to store flag.
+flag="";
+# Reading netcat output line by line.
+while read line
+do
+    # If there were exit inform about it and break the loop.
+    if [ "$line" == 'exit' ]; then
+        echo "Received 'exit'";
+        break;
+    # If we get message from flagperson.
+    elif [[ $line = *"flagperson:"* ]]; then
+        # Add last word from line to flag.
+        flag=$flag$(echo $line | awk '{ print $NF }');
+        # Print line 
+        echo $line;
+        # and the current flag.
+        echo $flag;
+    fi
+done < <( nc -q -1 shell2017.picoctf.com 7908)
