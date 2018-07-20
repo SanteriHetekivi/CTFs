@@ -1,0 +1,3 @@
+#!/bin/bash
+# Turn hex to ASCII charathers and pipe it to program.
+echo "59c51289ace9cdd4004afa54d297d310" | xxd -r -p | /problems/9177bfe904b2fb486bf2063954b4b3cb/hex2raw

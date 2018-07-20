@@ -1,0 +1,3 @@
+#!/bin/bash
+# Turn programs output ASCII charathers to hex.
+/problems/900be7006255006d8d4e09164dba63c0/raw2hex | xxd -p
