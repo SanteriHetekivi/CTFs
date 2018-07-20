@@ -1,0 +1,54 @@
+#!/bin/bash
+#------ LEVEL 2: Numbers can be base ANYTHING -----
+# Take binary input and turn it to desimal.
+des=$((2#$1));
+# and then to hex
+hex=$(printf '%x' "$des");
+# -------- LEVEL 1: Text = just 1's and 0's --------
+# Take hex and turn it to ASCII
+word=$(echo $hex | xxd -r -p);
+
+echo "WORD: $word";
+echo "HEX: $hex";
+echo "DES: $des";
+
+#----------- LEVEL 3: Hashing Function ------------
+
+# If second argument is not given or not number return.
+if [[ ! $2 =~ [1-9] ]];
+then
+    exit;
+fi;
+
+# Test for couple of multipliers.
+for n in {1..8}
+do
+    # Finding value that when divided by 16 gives argument 2 as a remainder.
+    sum=$(echo "16*$n+$2" | bc);
+    # Dont even try, if value is non printable ASCII.
+    if [ $sum -lt 32 ];
+    then
+        continue;
+    fi;
+
+    # When are over ASCII scale just stop.
+    if [ $sum -gt 126 ];
+    then
+        exit;
+    fi;
+
+    # Making dec to hex
+    hex=$(printf '%x' "$sum");
+    # and hex to ASCII.
+    result=$(echo $hex | xxd -r -p);
+    
+    # Echo results.
+    echo "N:$n";
+    echo "Sum:$sum";
+    echo "Hex:$hex";
+    echo "Result:$result";
+    echo "---------------------";
+done;
+
+#--------------- LEVEL 4: Real Hash ---------------
+# Just go to some MD5 cracking site like https://crackstation.net/

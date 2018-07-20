@@ -1,0 +1,9 @@
+#!/bin/bash
+# Given numbers.
+encryptedNumber=150815;
+privateKey=1941;
+modulus=435979;
+# Making formula for decrypting encrypted number.
+formula="$encryptedNumber^$privateKey%$modulus"
+# bc will calculate formula.
+echo $formula | bc;

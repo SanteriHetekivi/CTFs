@@ -1,0 +1,13 @@
+#!/bin/bash
+# Given key
+keyBase64="iyq1bFDkirtGqiFz7OVi4A==";
+# and ciphertext in base64.
+ciphertextBase64="I300ryGVTXJVT803Sdt/KcOGlyPStZkeIHKapRjzwWf9+p7fIWkBnCWu/IWls+5S";
+
+# Base64 key to hex.
+keyHex=$(echo "$keyBase64" | base64 --decode | xxd -p);
+# Base64 ciphertex decoded.
+ciphertext=$(echo "$ciphertextBase64" | base64 --decode);
+
+# Decrypting ciphertext with keyHex with AES 128 bits on block cipher mode.
+echo $ciphertext | openssl enc -d -nopad -aes-128-ecb -K $keyHex
