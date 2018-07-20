@@ -1,0 +1,12 @@
+#!/bin/bash
+# Loop trough all allowed numbers and if output does not contain number range print info.
+for n in {0..4096};
+do
+    output=$(/problems/bd058e83a119c78a006543d23d9f6422/bashloop $n);
+    if [[ "$output" != *"0 and 4096" ]];
+    then
+        echo "Input: $n"
+        echo "Output: $output";
+        break;
+    fi;
+done;
